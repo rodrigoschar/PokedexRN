@@ -1,12 +1,12 @@
 import React from 'react';
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import {COLORS} from '../constants/constants';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { COLORS } from '../constants/constants';
 import PokemonType from './PokemonType';
-import {getDynamicStyles} from '../utils/dynamicStyles';
-import {getNumberId} from '../utils/utils';
+import { getDynamicStyles } from '../utils/dynamicStyles';
+import { getNumberId } from '../utils/utils';
 
-const PokemonCard = ({pokemon}) => {
-  const dynamicStyles = getDynamicStyles(pokemon.types[0].pokemon_v2_type.name);
+const PokemonCard = ({ pokemon }) => {
+  const dynamicStyles = getDynamicStyles(pokemon.types[0]);
   const getImage = (number: number) => {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`;
   };
@@ -24,9 +24,7 @@ const PokemonCard = ({pokemon}) => {
             <FlatList
               style={style.pokemonBadge}
               data={pokemon.types}
-              renderItem={({item}) => (
-                <PokemonType item={item.pokemon_v2_type.name} />
-              )}
+              renderItem={({ item }) => <PokemonType item={item} />}
               testID="types-list"
             />
           </View>

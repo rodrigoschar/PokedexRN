@@ -53,3 +53,5 @@ export const COLORS = {
   white: '#FFFFFF',
   black: '#000000',
 };
+
+export const baseUrl: string = 'https://beta.pokeapi.co/graphql/v1beta';
