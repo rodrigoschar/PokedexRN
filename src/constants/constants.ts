@@ -40,18 +40,4 @@ export const POKEMON_BACKGROUND_TYPE_COLORS = {
   fairy: '#EB4971',
 };
 
-export const COLORS = {
-  primary: '#EA5D60',
-  secondary: '#00BFFF',
-  background: '#FFFFFF',
-  backgroundInput: '#F2F2F2',
-
-  text: '#333333',
-  textGray: '#747476',
-  textBlack: '#000000',
-  textNumber: '#17171B99',
-  white: '#FFFFFF',
-  black: '#000000',
-};
-
 export const baseUrl: string = 'https://beta.pokeapi.co/graphql/v1beta';

@@ -1,10 +1,10 @@
 export type GrapQLModel = {
-  data: Data
+  data: Data;
 };
 
 export type Data = {
   pokemon_v2_pokemon: PokemonV2Pokemon[];
-}
+};
 
 export type PokemonV2Pokemon = {
   id: number;
@@ -13,13 +13,13 @@ export type PokemonV2Pokemon = {
   height: number;
   weight: number;
   pokemon_v2_pokemontypes: PokemonV2Pokemontype[];
-}
+};
 
 export type PokemonV2Pokemontype = {
   pokemon_v2_type: PokemonV2Type;
-}
+};
 
 export type PokemonV2Type = {
   id: number;
   name: string;
-}
+};

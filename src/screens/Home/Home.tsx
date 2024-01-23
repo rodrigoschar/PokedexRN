@@ -1,27 +1,37 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/react-in-jsx-scope */
 import {
   ActivityIndicator,
   FlatList,
   SafeAreaView,
-  Text,
+  StyleSheet,
   View,
+  useColorScheme,
 } from 'react-native';
 import PokemonCard from '../../components/PokemonCard';
 import HomeHeader from '../../components/HomeHeader';
-import { getPokemonsData } from '../../hooks/getPokemonsHook';
+import { getPokemonsData } from '../../hooks/usePokemonsHook';
+import Colors from '../../utils/colors';
+import LoadingAnimation from '../../components/LoadingAnimation';
 
 const Home = (): React.JSX.Element => {
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = isDarkMode
+    ? Colors.dark.colors.themeColor
+    : Colors.light.colors.themeColor;
+
   const { loading, data, getPokemons } = getPokemonsData();
 
   if (loading) {
     return (
-      <View>
-        <Text testID="loading-pokemon">Loading....</Text>
-      </View>
+      <SafeAreaView style={{ flex: 1, backgroundColor: backgroundStyle }}>
+        <LoadingAnimation message="Loading Pokemons..." />
+      </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: backgroundStyle }}>
       <HomeHeader />
       <View testID="pokemon-container">
         <FlatList
@@ -32,9 +42,9 @@ const Home = (): React.JSX.Element => {
           ListFooterComponent={() =>
             loading ? (
               <ActivityIndicator
-                style={{ marginTop: 20 }}
                 size="large"
-                color="blue"
+                color={Colors.light.colors.indicator}
+                style={styles.indicator}
               />
             ) : null
           }
@@ -44,5 +54,13 @@ const Home = (): React.JSX.Element => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  indicator: {
+    padding: 12,
+    backgroundColor: '#555',
+    borderRadius: 12,
+  },
+});
 
 export default Home;

@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 const GET_POKEMOS_PAGINATED = gql`
   query getAllPokemonWithPagination($limit: Int, $offset: Int) {

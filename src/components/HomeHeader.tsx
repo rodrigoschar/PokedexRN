@@ -1,11 +1,18 @@
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {COLORS} from '../constants/constants';
+import { StyleSheet, Text, View, useColorScheme } from 'react-native';
+import Colors from '../utils/colors';
 
 const HomeHeader = (): React.JSX.Element => {
+  const isDarkMode = useColorScheme() === 'dark';
+  const textColor = isDarkMode
+    ? Colors.dark.colors.textColor
+    : Colors.light.colors.textColor;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pokédex</Text>
+      <Text style={{ color: textColor, fontSize: 32, fontWeight: 'bold' }}>
+        Pokédex
+      </Text>
       <Text style={styles.description}>
         Search for Pokémon by name or using the National Pokédex number.
       </Text>
@@ -28,7 +35,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'normal',
-    color: COLORS.textGray,
+    color: Colors.light.colors.textGray,
   },
 });
 

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   POKEMON_BACKGROUND_TYPE_COLORS,
   POKEMON_TYPE_COLORS,

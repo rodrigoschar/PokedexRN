@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { COLORS } from '../constants/constants';
 import PokemonType from './PokemonType';
 import { getDynamicStyles } from '../utils/dynamicStyles';
 import { getNumberId } from '../utils/utils';
+import Colors from '../utils/colors';
 
 const PokemonCard = ({ pokemon }) => {
   const dynamicStyles = getDynamicStyles(pokemon.types[0]);
@@ -67,7 +67,7 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     fontStyle: 'normal',
-    color: COLORS.textNumber,
+    color: Colors.light.colors.textNumber,
     textAlign: 'left',
     marginRight: 20,
   },
@@ -75,7 +75,7 @@ const style = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     fontStyle: 'normal',
-    color: COLORS.white,
+    color: Colors.light.colors.white,
   },
   pokemonBadge: {
     flexDirection: 'row',

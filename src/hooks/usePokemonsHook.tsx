@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { baseUrl } from '../constants/constants';
-import { GrapQLModel } from '../models/pokemonModel';
+import { GrapQLModel } from '../models/GraphQLModel';
 import Pokemon from '../models/Pokemon';
 import { useEffect, useState } from 'react';
 import Realm from 'realm';
@@ -73,7 +73,7 @@ export const getPokemonsData = () => {
   };
 
   const getPokemonsFromRealm = () => {
-    const list = realm.objects('Pokemon').sorted('order', false);
+    const list = realm.objects('Pokemon').sorted('id', false);
     setPokemonsList(list);
   };
 
