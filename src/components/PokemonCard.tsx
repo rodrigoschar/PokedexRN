@@ -3,9 +3,14 @@ import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import PokemonType from './PokemonType';
 import { getDynamicStyles } from '../utils/dynamicStyles';
 import { getNumberId } from '../utils/utils';
-import Colors from '../utils/colors';
+import { colors } from '../utils/colors';
+import { PokemonUI } from '../models/PokemonUi';
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({
+  pokemon,
+}: {
+  pokemon: PokemonUI;
+}): React.JSX.Element => {
   const dynamicStyles = getDynamicStyles(pokemon.types[0]);
   const getImage = (number: number) => {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`;
@@ -24,7 +29,7 @@ const PokemonCard = ({ pokemon }) => {
             <FlatList
               style={style.pokemonBadge}
               data={pokemon.types}
-              renderItem={({ item }) => <PokemonType item={item} />}
+              renderItem={({ item }) => <PokemonType name={item} />}
               testID="types-list"
             />
           </View>
@@ -67,7 +72,7 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     fontStyle: 'normal',
-    color: Colors.light.colors.textNumber,
+    color: colors.textNumber,
     textAlign: 'left',
     marginRight: 20,
   },
@@ -75,7 +80,7 @@ const style = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     fontStyle: 'normal',
-    color: Colors.light.colors.white,
+    color: colors.white,
   },
   pokemonBadge: {
     flexDirection: 'row',

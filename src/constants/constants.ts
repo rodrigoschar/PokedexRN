@@ -41,3 +41,7 @@ export const POKEMON_BACKGROUND_TYPE_COLORS = {
 };
 
 export const baseUrl: string = 'https://beta.pokeapi.co/graphql/v1beta';
+
+export type ThemeMode = {
+  mode: string;
+};

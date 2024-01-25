@@ -1,29 +1,20 @@
-const commonColors = {
-  colors: {
-    textGray: '#747476',
-    textNumber: '#17171B99',
-    white: '#FFFFFF',
-    black: '#000000',
-    indicator: '#bb5533',
-  },
-};
-
-const light = {
-  colors: {
-    themeColor: '#FFFFFF',
+export const colors = {
+  light: {
+    primary: '#FFFFFF',
     textColor: '#000000',
     indicatorContainer: '#fff',
-    ...commonColors.colors,
   },
-};
-
-const dark = {
-  colors: {
-    themeColor: '#121212',
+  dark: {
+    primary: '#121212',
     textColor: '#FFFFFF',
     indicatorContainer: '#000',
-    ...commonColors.colors,
   },
+  primary: '#FFFFFF',
+  textColor: '#000000',
+  indicatorContainer: '#fff',
+  textGray: '#747476',
+  textNumber: '#17171B99',
+  white: '#FFFFFF',
+  black: '#000000',
+  indicator: '#bb5533',
 };
-
-export default { light, dark };

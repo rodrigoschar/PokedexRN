@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Realm from 'realm';
 import { api } from '../api/api';
 import { PokemonUI } from '../models/PokemonUi';
+import getPokemonsPaginatedQuery from '../graphql/GraphqlQuery';
 
 const realm = new Realm({ schema: [Pokemon] });
 console.log(realm.path);
@@ -20,23 +21,10 @@ export const getPokemonsData = () => {
     if (pokemonList.length === 0) {
       getPokemonsFromRealm();
     }
-    const limit = 20;
+
     const offset = pokemonList.length;
     const response = await api.post<GrapQLModel>(baseUrl, {
-      query: `query getAllPokemonWithPagination {
-        pokemon_v2_pokemon(limit: ${limit}, offset: ${offset}) {
-          id
-          name
-          order
-          height
-          weight
-          pokemon_v2_pokemontypes {
-            pokemon_v2_type {
-              name
-            }
-          }
-        }
-      }`,
+      query: getPokemonsPaginatedQuery(offset),
     });
     storeDataInDB(response.data);
   };

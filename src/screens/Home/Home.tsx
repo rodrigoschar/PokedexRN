@@ -6,32 +6,22 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  useColorScheme,
 } from 'react-native';
 import PokemonCard from '../../components/PokemonCard';
 import HomeHeader from '../../components/HomeHeader';
 import { getPokemonsData } from '../../hooks/usePokemonsHook';
-import Colors from '../../utils/colors';
-import LoadingAnimation from '../../components/LoadingAnimation';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
+import { colors } from '../../utils/colors';
 
 const Home = (): React.JSX.Element => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = isDarkMode
-    ? Colors.dark.colors.themeColor
-    : Colors.light.colors.themeColor;
-
+  const { theme } = useContext(ThemeContext);
+  console.log(theme);
+  let activeColors = colors[theme.mode];
   const { loading, data, getPokemons } = getPokemonsData();
 
-  if (loading) {
-    return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: backgroundStyle }}>
-        <LoadingAnimation message="Loading Pokemons..." />
-      </SafeAreaView>
-    );
-  }
-
   return (
-    <SafeAreaView style={{ backgroundColor: backgroundStyle }}>
+    <SafeAreaView style={{ backgroundColor: activeColors.primary }}>
       <HomeHeader />
       <View testID="pokemon-container">
         <FlatList
@@ -43,7 +33,7 @@ const Home = (): React.JSX.Element => {
             loading ? (
               <ActivityIndicator
                 size="large"
-                color={Colors.light.colors.indicator}
+                color={activeColors.indicator}
                 style={styles.indicator}
               />
             ) : null

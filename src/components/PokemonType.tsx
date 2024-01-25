@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { getDynamicStyles } from '../utils/dynamicStyles';
-import Colors from '../utils/colors';
+import { colors } from '../utils/colors';
 
-function PokemonType({ item }) {
-  const dynamicStyles = getDynamicStyles(item);
+function PokemonType({ name }: { name: string }) {
+  const dynamicStyles = getDynamicStyles(name);
   return (
     <View style={dynamicStyles.type}>
       <View style={style.container}>
-        <Text style={style.bargeText}> {item}</Text>
+        <Text style={style.bargeText}> {name}</Text>
       </View>
     </View>
   );
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     fontStyle: 'normal',
-    color: Colors.light.colors.white,
+    color: colors.white,
     marginRight: 3,
   },
 });

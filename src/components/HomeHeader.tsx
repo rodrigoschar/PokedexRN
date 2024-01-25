@@ -1,16 +1,22 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import { StyleSheet, Text, View, useColorScheme } from 'react-native';
-import Colors from '../utils/colors';
+import { StyleSheet, Text, View } from 'react-native';
+import { useContext } from 'react';
+import { colors } from '../utils/colors';
+import { ThemeContext } from '../context/ThemeContext';
 
 const HomeHeader = (): React.JSX.Element => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const textColor = isDarkMode
-    ? Colors.dark.colors.textColor
-    : Colors.light.colors.textColor;
+  const { theme } = useContext(ThemeContext);
+  let activeColors = colors[theme.mode];
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: textColor, fontSize: 32, fontWeight: 'bold' }}>
+      <Text
+        style={{
+          color: activeColors.textColor,
+          fontSize: 32,
+          fontWeight: 'bold',
+        }}>
         Pokédex
       </Text>
       <Text style={styles.description}>
@@ -35,7 +41,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'normal',
-    color: Colors.light.colors.textGray,
+    color: colors.textGray,
   },
 });
 
